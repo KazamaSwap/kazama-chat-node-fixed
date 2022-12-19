@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 
 //mongoose connection
-mongoose.connect("mongodb+srv://URL-HERE", {
+mongoose.connect("mongodb+srv://Admin:9X6WUZfDaU4w3jD@cluster0.g1hyyeo.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
     }).then(() => {

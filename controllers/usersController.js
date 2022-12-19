@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const ethers = require('ethers')
+const verifyMessage = require('ethers/lib/utils')
 
 const types = {
   EditUsername: [
@@ -111,8 +112,10 @@ const domain = {
         address,
         username
       }
-      const signerAddr = await ethers.utils.verifyTypedData(domain, types['EditUsername'], message, signature);
-      if (signerAddr !== address) {
+      // const signerAddr = await ethers.utils.verifyTypedData(domain, types['EditUsername'], message, signature);
+      const signedAddress = verifyMessage(username, signature);
+      console.log("signed Message", signedAddress)
+      if (signedAddress.toLowerCase() !== address.toLowerCase()) {
         return res.json({
           message: "Not Allowed"
         });
@@ -121,7 +124,7 @@ const domain = {
       const update = { $set: {username: username}}
       
       let user = await User.findOne({ address: address });
-      console.log(user.username, username)
+
       if (user.username != username) {
         const userData = await User.updateOne(
           query,
