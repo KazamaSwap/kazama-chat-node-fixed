@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 });
 
 //mongoose connection
-mongoose.connect("mongodb+srv://kazamaChatNode:AJYb9mmxOr4MMqsR@cluster0.ztywcu2.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://kazama-nft-api:X33ZASGgnBjuKbWX@cluster0.iplwndz.mongodb.net/PROFILE?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
     }).then(() => {
