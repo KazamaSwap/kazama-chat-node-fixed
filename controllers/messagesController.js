@@ -66,7 +66,7 @@ module.exports.getAllMessage = async (req, res, next) => {
         const projectMessages = await Promise.all(messages.sort((a, b) => {
             return a.updatedAt.getTime() - b.updatedAt.getTime()
         }).map(async (msg) => {
-            console.log(msg.sender)
+            // console.log(msg.sender)
             const user = await userModel.findOne({
                 '_id': msg.sender
             })
