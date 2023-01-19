@@ -28,7 +28,10 @@ module.exports.login = async (req, res, next) => {
       address
     } = req.body;
     const user = await User.findOne({
-      address
+      address: {
+        $regex: address.toLowerCase(),
+        "$options": "i" 
+      }
     });
     if (!user)
       return res.json({
@@ -57,7 +60,10 @@ module.exports.register = async (req, res, next) => {
     // if (usernameCheck)
     //   return res.json({ msg: "Username already used", status: false });
     const addressCheck = await User.findOne({
-      address
+      address: {
+        $regex: address.toLowerCase(),
+        "$options": "i" 
+      }
     });
     if (addressCheck)
       return res.json({
@@ -112,7 +118,10 @@ module.exports.loginOrRegister = async (req, res, next) => {
       isLiquidityProvider
     } = req.body;
     let user = await User.findOne({
-      address: address
+      address: {
+        $regex: address.toLowerCase(),
+        "$options": "i" 
+      }
     });
 
     if (user) {
@@ -186,7 +195,10 @@ module.exports.setUserName = async (req, res, next) => {
     }
 
     let user = await User.findOne({
-      address: address
+      address: {
+        $regex: address.toLowerCase(),
+        "$options": "i" 
+      }
     });
 
     if (user.username != username) {
@@ -363,13 +375,13 @@ module.exports.setAvatar = async (req, res, next) => {
     const userData = await User.updateOne(
       query,
       update, {
-        upsert: true
+        upsert: false
       },
       function (err, doc) {
         if (err) {
           return;
         } else {
-          console.log("Updated");
+          console.log("Avatar Updated");
         }
       });
     return res.json({
@@ -413,9 +425,12 @@ module.exports.getUser = async (req, res, next) => {
       address
     } = req.body;
     const user = await User.findOne({
-      address
+      address: {
+        $regex: address.toLowerCase(),
+        "$options": "i" 
+      }
     })
-    // console.log("user", address, user)
+    console.log("user", address, user)
     return res.json(user);
   } catch (err) {
     next(err);
