@@ -1,4 +1,4 @@
-const { register, loginOrRegister, setUserName, setAvatar, setSpacenaut, setKraken, setWhale, setShark, setOrca, setDolphin, setTurtle, setFish, setCrab, setShrimp, setHolder, setLiquidityProvider, getAllUsers, getUser, isValidName } = require("../controllers/usersController");
+const { register, loginOrRegister, setUserName, setBalance, setAvatar, setSpacenaut, setKraken, setWhale, setShark, setOrca, setDolphin, setTurtle, setFish, setCrab, setShrimp, setHolder, setLiquidityProvider, getAllUsers, getUser, isValidName } = require("../controllers/usersController");
 const { login } = require("../controllers/usersController");
 const { logOut } = require("../controllers/usersController");
 
