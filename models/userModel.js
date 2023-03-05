@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         unique: true,
         max: 64,
     },
+    balance:{
+        type: Uint256,
+        max: 96,
+    },
     role: {
         type: String,
         default: "user"
