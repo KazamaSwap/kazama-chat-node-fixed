@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    isSpacenaut: {
+        type: Boolean,
+        default: false,
+    },
     isKraken: {
         type: Boolean,
         default: false,
@@ -45,11 +49,27 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    isOrca: {
+        type: Boolean,
+        default: false,
+    },
     isDolphin: {
         type: Boolean,
         default: false,
     },
     isTurtle: {
+        type: Boolean,
+        default: false,
+    },
+    isFish: {
+        type: Boolean,
+        default: false,
+    },
+    isCrab: {
+        type: Boolean,
+        default: false,
+    },
+    isShrimp: {
         type: Boolean,
         default: false,
     },
