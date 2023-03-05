@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         max: 64,
     },
     balance:{
-        type: Uint256,
+        type: Number,
         max: 96,
     },
     role: {
