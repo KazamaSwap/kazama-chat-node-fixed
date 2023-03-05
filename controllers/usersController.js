@@ -109,11 +109,17 @@ module.exports.loginOrRegister = async (req, res, next) => {
   try {
     const {
       address,
+      balance,
+      isSpacenaut,
       isKraken,
       isWhale,
       isShark,
+      isOrca,
       isDolpin,
       isTurtle,
+      isFish,
+      isCrab,
+      isShrimp,
       isHolder,
       isLiquidityProvider
     } = req.body;
@@ -127,11 +133,17 @@ module.exports.loginOrRegister = async (req, res, next) => {
     if (user) {
       user = await User.findByIdAndUpdate(
         user._id, {
+          balance: balance,
+          isSpacenaut: isSpacenaut,
           isKraken: isKraken,
           isWhale: isWhale,
           isShark: isShark,
+          isOrca: isOrca,
           isDolpin: isDolpin,
           isTurtle: isTurtle,
+          isFish: isFish,
+          isCrab: isCrab,
+          isShrimp: isShrimp,
           isHolder: isHolder,
           isLiquidityProvider: isLiquidityProvider,
         }, {
@@ -145,12 +157,17 @@ module.exports.loginOrRegister = async (req, res, next) => {
     } else {
       user = await User.create({
         address,
-        username: address,
+        balance,
+        isSpacenaut: isSpacenaut,
         isKraken: isKraken,
         isWhale: isWhale,
         isShark: isShark,
+        isOrca: isOrca,
         isDolpin: isDolpin,
         isTurtle: isTurtle,
+        isFish: isFish,
+        isCrab: isCrab,
+        isShrimp: isShrimp,
         isHolder: isHolder,
         isLiquidityProvider: isLiquidityProvider,
       });
@@ -218,6 +235,26 @@ module.exports.setUserName = async (req, res, next) => {
   }
 }
 
+module.exports.setSpacenaut = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const spacenaut = req.params.isSpacenaut;
+    const userData = await User.findByIdAndUpdate(
+      userId, {
+        isSpacenaut: spacenaut,
+      }, {
+        new: true
+      }
+    );
+    return res.json({
+      userId: userData._id,
+      isSpacenaut: userData.isSpacenaut
+    });
+  } catch (ex) {
+    next(ex);
+  }
+}
+
 module.exports.setKraken = async (req, res, next) => {
   try {
     const userId = req.params.id;
@@ -278,6 +315,26 @@ module.exports.setShark = async (req, res, next) => {
   }
 }
 
+module.exports.setOrca = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const orca = req.params.isOrca;
+    const userData = await User.findByIdAndUpdate(
+      userId, {
+        isOrca: orca,
+      }, {
+        new: true
+      }
+    );
+    return res.json({
+      userId: userData._id,
+      isOrca: userData.isOrca
+    });
+  } catch (ex) {
+    next(ex);
+  }
+}
+
 module.exports.setDolphin = async (req, res, next) => {
   try {
     const userId = req.params.id;
@@ -312,6 +369,66 @@ module.exports.setTurtle = async (req, res, next) => {
     return res.json({
       userId: userData._id,
       isTurtle: userData.isTurtle
+    });
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.setFish = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const fish = req.params.isFish;
+    const userData = await User.findByIdAndUpdate(
+      userId, {
+        isFish: fish,
+      }, {
+        new: true
+      }
+    );
+    return res.json({
+      userId: userData._id,
+      isFish: userData.isFish
+    });
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.setCrab = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const crab = req.params.isCrab;
+    const userData = await User.findByIdAndUpdate(
+      userId, {
+        isCrab: crab,
+      }, {
+        new: true
+      }
+    );
+    return res.json({
+      userId: userData._id,
+      isCrab: userData.isCrab
+    });
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.setShrimp = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const shrimp = req.params.isShrimp;
+    const userData = await User.findByIdAndUpdate(
+      userId, {
+        isShrimp: shrimp,
+      }, {
+        new: true
+      }
+    );
+    return res.json({
+      userId: userData._id,
+      isShrimp: userData.isShrimp
     });
   } catch (ex) {
     next(ex);
