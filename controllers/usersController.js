@@ -158,6 +158,7 @@ module.exports.loginOrRegister = async (req, res, next) => {
       user = await User.create({
         address,
         balance,
+        username: address,
         isSpacenaut: isSpacenaut,
         isKraken: isKraken,
         isWhale: isWhale,
